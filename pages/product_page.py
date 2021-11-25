@@ -10,8 +10,13 @@ class ProductPage(BasePage):
 
     def should_be_correct_message_product_in_basket(self):
         # проверяем совпадает ли название товара и цена в сообщении (в корзине) с тем,что мы добавили
-        self.should_be_correct_message_product_name_in_basket()
-        self.should_be_correct_message_product_price_in_basket()
+        name = self.product_name()
+        name_in_basket = self.message_product_name_in_basket()
+        self.should_be_correct_message_product_name_in_basket(name, name_in_basket)
+
+        price = self.product_price()
+        price_in_basket = self.message_product_price_in_basket()
+        self.should_be_correct_message_product_price_in_basket(price, price_in_basket)
 
     def product_name(self):
         #  фиксируем (возвращаем) название товара  из карточки товара, добавляемого в корзину
@@ -25,10 +30,11 @@ class ProductPage(BasePage):
         product_name_in_basket = product_name_element_in_basket.text
         return product_name_in_basket
 
-    def should_be_correct_message_product_name_in_basket(self):
+    def should_be_correct_message_product_name_in_basket(self, product_name, product_name_in_basket ):
         # проверяем совпадают ли названия товара, который добавили в корзину с названием в сообщении
-        product_name = self.product_name()
-        product_name_in_basket = self.message_product_name_in_basket()
+        # для проверки наименование товара передаютя в качестве параметров
+        # product_name = self.product_name()
+        # product_name_in_basket = self.message_product_name_in_basket()
         assert product_name == product_name_in_basket, "Non"
 
     # аналогично и с ценой
@@ -42,9 +48,9 @@ class ProductPage(BasePage):
         product_price_in_basket = product_price_element_in_basket.text
         return product_price_in_basket
 
-    def should_be_correct_message_product_price_in_basket(self):
-        product_price = self.product_price()
-        product_price_in_basket = self.message_product_price_in_basket()
+    def should_be_correct_message_product_price_in_basket(self, product_price,product_price_in_basket):
+        # product_price = self.product_price()
+        # product_price_in_basket = self.message_product_price_in_basket()
         assert product_price == product_price_in_basket, 'Non'
 
 
