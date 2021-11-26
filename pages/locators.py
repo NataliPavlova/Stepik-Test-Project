@@ -1,10 +1,6 @@
 from selenium.webdriver.common.by import By
 
 
-class MainPageLocators():
-    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
-
-
 class LoginPageLocators():
     LOGIN_FORM = (By.CSS_SELECTOR, "#login_form")
     LOGIN_REGISTER_FORM = (By.CSS_SELECTOR, "#register_form")
@@ -18,4 +14,7 @@ class ProductPageLocators():
     PRODUCT_PRICE_MESSAGE_IN_BASKET = (By.CSS_SELECTOR, '#messages > .alert:nth-child(3) > .alertinner strong')
     SUCCESS_MESSAGE = (By.CSS_SELECTOR, '#messages > .alert:nth-child(1)')
 
+
+class BasePageLocators():
+    LOGIN_LINK = (By.CSS_SELECTOR, "#login_link")
 
