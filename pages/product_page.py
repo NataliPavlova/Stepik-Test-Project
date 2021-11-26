@@ -18,6 +18,16 @@ class ProductPage(BasePage):
         product_price_in_basket = self.message_product_price_in_basket()
         self.should_be_correct_message_product_price_in_basket(product_price, product_price_in_basket)
 
+    def should_not_be_success_message(self):
+        # сообщения об успешном добавлении товара в корзину не должно быть на странице товара
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is presented, but should not be"
+
+    def should_be_to_disappeared(self):
+        # элемент должен изчезнуть
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Success message is not disappeared, but should"
+
     def product_name(self):
         #  фиксируем (возвращаем) название товара  из карточки товара, добавляемого в корзину
         product_name_element = self.browser.find_element(*ProductPageLocators.PRODUCT_NAME)
