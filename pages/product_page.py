@@ -4,6 +4,8 @@ from .locators import ProductPageLocators
 
 class ProductPage(BasePage):
 
+    link = 'http://selenium1py.pythonanywhere.com/catalogue/the-shellcoders-handbook_209/?promo=newYear'
+
     def add_product_to_basket(self):
         add_to_basket = self.browser.find_element(*ProductPageLocators.ADD_TO_BASKET)
         add_to_basket.click()
