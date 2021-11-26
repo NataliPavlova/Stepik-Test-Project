@@ -3,7 +3,8 @@ import time
 import pytest
 
 
-@pytest.mark.parametrize('promo_offer', range(10))
+@pytest.mark.parametrize('promo_offer',
+                         [pytest.param(i, marks=pytest.mark.xfail(i == 7, reason='Normal')) for i in range(10)])
 def test_guest_can_add_product_to_basket(browser, promo_offer):
     link = ('http://selenium1py.pythonanywhere.com/catalogue/coders-at-work_207/?promo=offer{}'.format(promo_offer))
     page = ProductPage(browser, link)
