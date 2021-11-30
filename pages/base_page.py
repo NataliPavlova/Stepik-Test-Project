@@ -64,3 +64,8 @@ class BasePage():
             alert.accept()
         except NoAlertPresentException:
             print("No second alert presented")
+
+    def go_to_in_basket(self):
+        # переход в корзину по кнопке в шапке сайта
+        link = self.browser.find_element(*BasePageLocators.BASKET_BUTTON)
+        link.click()
